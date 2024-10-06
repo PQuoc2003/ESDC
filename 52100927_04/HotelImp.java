@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import model.table.GuestTable;
 import model.Room;
 import repository.EmployeeRepository;
+import repository.RoomRepository;
 import service.imp.EmployeeServiceImp;
+import service.imp.RoomServiceImp;
 
 public class HotelImp implements Hotel {
 
@@ -41,17 +43,19 @@ public class HotelImp implements Hotel {
     @Override
     public ArrayList<Room> getAvailableRoom() {
 
+        RoomRepository roomRepository = new RoomRepository();
+        RoomServiceImp roomServiceImp = new RoomServiceImp(roomRepository);
 
-
-        return null;
-
+        return roomServiceImp.getAvailableRooms();
 
     }
 
     @Override
     public boolean book(String room_type, String guest_name, String ssn) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'book'");
+
+        return true;
+
+
     }
 
     @Override
