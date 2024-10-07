@@ -28,4 +28,42 @@ public class RoomServiceImp implements RoomService {
 
     }
 
+    @Override
+    public boolean updateQuantity(String room_type, boolean isIncrease) {
+
+        Room room = this.roomRepository.getAvailableRoomByRoomType(room_type);
+
+        int remain = room.getRemainRoom();
+
+        if (remain == 0 && !isIncrease)
+            return false;
+
+        if (remain == room.getTotalRoom() && isIncrease)
+            return false;
+
+        if (isIncrease) {
+            remain += 1;
+        } else {
+            remain -= 1;
+        }
+
+        room.setRemainRoom(remain);
+
+        return this.roomRepository.update(room);
+
+    }
+
+    public boolean checkAvailableByRoomType(String room_type) {
+
+        Room room = this.roomRepository.getAvailableRoomByRoomType(room_type);
+
+        int remain = room.getRemainRoom();
+
+        if (remain == 0)
+            return false;
+
+        return true;
+
+    }
+
 }

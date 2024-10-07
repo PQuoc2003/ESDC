@@ -60,4 +60,34 @@ public class GuestRepository {
 
     }
 
+
+    public GuestTable getAllGuest(){
+
+        File file = new File("../resources/guest.ser");
+
+        FileInputStream f = null;
+
+        if (!file.exists())
+            return null;
+        
+        GuestTable guestTable = null;
+
+        try {
+            f = new FileInputStream("../resources/room.ser");
+            ObjectInputStream in = new ObjectInputStream(f);
+
+            guestTable = (GuestTable) in.readObject();
+
+            in.close();
+            f.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+
+        return guestTable;
+
+    }
+
+
 }

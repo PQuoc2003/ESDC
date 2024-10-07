@@ -39,6 +39,41 @@ public class RoomRepository {
         return roomTable;
     }
 
+
+    public Room getAvailableRoomByRoomType(String room_type){
+
+        File file = new File("../resources/room.ser");
+
+        FileInputStream f = null;
+
+        if (!file.exists())
+            return null;
+        
+        RoomTable roomTable = null;
+
+        try {
+            f = new FileInputStream("../resources/room.ser");
+            ObjectInputStream in = new ObjectInputStream(f);
+
+            roomTable = (RoomTable) in.readObject();
+
+            in.close();
+            f.close();
+
+        } catch (Exception e) {
+            return null;
+        }
+
+        ArrayList<Room> rooms = roomTable.getRooms();
+
+        for(Room room : rooms){
+            if(room.getType().equals(room_type)) return room;
+        }
+
+        return null;
+    }
+
+
     public boolean update(Room room) {
 
         File file = new File("../resources/room.ser");
@@ -47,6 +82,7 @@ public class RoomRepository {
 
         RoomTable roomTable = null;
 
+        // open file ser file
         if (file.exists()) {
             try {
                 f = new FileInputStream("../resources/room.ser");
@@ -68,6 +104,7 @@ public class RoomRepository {
 
         ArrayList<Room> rooms = roomTable.getRooms();
 
+        // update remain room
         for (Room room2 : rooms) {
             if (room2.getType().equals(room.getType())) {
                 room2.setRemainRoom(room.getRemainRoom());

@@ -1,11 +1,15 @@
 import java.util.ArrayList;
 
 import model.table.GuestTable;
+import model.Guest;
 import model.Room;
 import repository.EmployeeRepository;
+import repository.GuestRepository;
 import repository.RoomRepository;
 import service.imp.EmployeeServiceImp;
+import service.imp.GuestServiceImp;
 import service.imp.RoomServiceImp;
+import cookies.Information;
 
 public class HotelImp implements Hotel {
 
@@ -53,21 +57,41 @@ public class HotelImp implements Hotel {
     @Override
     public boolean book(String room_type, String guest_name, String ssn) {
 
-        return true;
+        RoomRepository roomRepository = new RoomRepository();
+        RoomServiceImp roomServiceImp = new RoomServiceImp(roomRepository);
 
+        GuestRepository guestRepository = new GuestRepository();
+        GuestServiceImp guestServiceImp = new GuestServiceImp(guestRepository);
+
+        boolean isAvailable = roomServiceImp.checkAvailableByRoomType(room_type);
+
+        if (!isAvailable) return false;
+
+        Guest guest = new Guest(guest_name, ssn, room_type);
+
+        roomServiceImp.updateQuantity(room_type, false);
+
+        guestServiceImp.save(guest);
+
+        return true;
 
     }
 
     @Override
     public GuestTable guestList() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guestList'");
+
+        GuestRepository guestRepository = new GuestRepository();
+        GuestServiceImp guestServiceImp = new GuestServiceImp(guestRepository);
+
+        return guestServiceImp.getAllGuest();
+
     }
 
     @Override
     public void logout() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'logout'");
+
+        Information.currentEmployee = null;
+
     }
     
 }
