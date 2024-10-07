@@ -46,6 +46,16 @@ public class Guest implements Serializable{
         this.room = room;
     }
 
+
+
+
+    @Override
+    public String toString() {
+        return "Guest [name=" + name + ", ssn=" + ssn + ", room=" + room + "]";
+    }
+
+    
+
     
 
 

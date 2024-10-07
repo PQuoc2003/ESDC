@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.table.GuestTable;
 import model.Guest;
+import model.Role;
 import model.Room;
 import repository.EmployeeRepository;
 import repository.GuestRepository;
@@ -38,7 +40,8 @@ public class HotelImp implements Hotel {
 
         boolean status = employeeServiceImp.login(username, password);
 
-        if(!status) return "Login fail";
+        if (!status)
+            return "Login fail";
 
         return "Login successfully";
 
@@ -46,6 +49,10 @@ public class HotelImp implements Hotel {
 
     @Override
     public ArrayList<Room> getAvailableRoom() {
+
+        if (Information.currentEmployee == null) {
+            return null;
+        }
 
         RoomRepository roomRepository = new RoomRepository();
         RoomServiceImp roomServiceImp = new RoomServiceImp(roomRepository);
@@ -57,6 +64,8 @@ public class HotelImp implements Hotel {
     @Override
     public boolean book(String room_type, String guest_name, String ssn) {
 
+        if(Information.currentEmployee == null) return false;
+
         RoomRepository roomRepository = new RoomRepository();
         RoomServiceImp roomServiceImp = new RoomServiceImp(roomRepository);
 
@@ -65,7 +74,17 @@ public class HotelImp implements Hotel {
 
         boolean isAvailable = roomServiceImp.checkAvailableByRoomType(room_type);
 
-        if (!isAvailable) return false;
+        if (!isAvailable)
+            return false;
+
+        if(ssn.equals("")){
+            Random random = new Random();
+
+            for(int i = 0; i < 6; i++){
+                ssn += String.valueOf(random.nextInt(10));
+            }
+
+        }
 
         Guest guest = new Guest(guest_name, ssn, room_type);
 
@@ -83,7 +102,17 @@ public class HotelImp implements Hotel {
         GuestRepository guestRepository = new GuestRepository();
         GuestServiceImp guestServiceImp = new GuestServiceImp(guestRepository);
 
-        return guestServiceImp.getAllGuest();
+        if(Information.currentEmployee == null) return null;
+
+        if (Information.currentEmployee.getRole() != Role.ROlE_MANAGER)
+            return null;
+
+        GuestTable guestTable = guestServiceImp.getAllGuest();
+
+        if (guestTable == null)
+            guestTable = new GuestTable();
+
+        return guestTable;
 
     }
 
@@ -93,5 +122,5 @@ public class HotelImp implements Hotel {
         Information.currentEmployee = null;
 
     }
-    
+
 }
