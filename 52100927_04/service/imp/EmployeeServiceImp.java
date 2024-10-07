@@ -17,8 +17,6 @@ public class EmployeeServiceImp implements EmployeeService{
 
     
 
-
-
     public EmployeeServiceImp(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
@@ -28,12 +26,12 @@ public class EmployeeServiceImp implements EmployeeService{
 
 
     @Override
-    public void login(String username, String password) {
+    public boolean login(String username, String password) {
 
         Employee employee = employeeRepository.login(username, password);
 
 
-        if (employee == null) return;
+        if (employee == null) return false;
 
         // static file
 
@@ -55,8 +53,10 @@ public class EmployeeServiceImp implements EmployeeService{
             fileWriter.close();
 
         } catch (Exception e) {
-            return;
+            return false;
         }
+
+        return true;
 
 
 

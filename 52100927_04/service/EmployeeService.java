@@ -2,9 +2,8 @@ package service;
 
 public interface EmployeeService {
 
-    void login(String username, String password);
+    boolean login(String username, String password);
 
 
-    
     
 }
