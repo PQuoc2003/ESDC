@@ -45,7 +45,7 @@ public class EmployeeServiceImp implements EmployeeService{
         String strDate = dateFormat.format(date);  
 
         String logPath = "resources/log.txt";
-        String text = username + " - " + employee.getRole() + " - " + strDate;
+        String text = username + " - " + employee.getRole() + " - " + strDate + "\n";
 
         try {
             FileWriter fileWriter = new FileWriter(logPath, true);

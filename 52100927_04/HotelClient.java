@@ -7,8 +7,8 @@ import model.Guest;
 import model.Room;
 import model.table.GuestTable;
 
-public class Client {
-    public Client() {
+public class HotelClient {
+    public HotelClient() {
     }
 
     public static void main(String[] args) {

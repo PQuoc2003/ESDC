@@ -3,10 +3,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 
-public class Server extends HotelImp{
+public class HotelServer extends HotelImp{
 
 
-    public Server(){};
+    public HotelServer(){};
 
     public static void main(String[] args){
 
