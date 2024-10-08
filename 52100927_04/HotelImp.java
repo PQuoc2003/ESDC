@@ -117,9 +117,14 @@ public class HotelImp implements Hotel {
     }
 
     @Override
-    public void logout() {
+    public boolean logout() {
+
+        if (Information.currentEmployee == null) {
+            return false;
+        }
 
         Information.currentEmployee = null;
+        return true;
 
     }
 

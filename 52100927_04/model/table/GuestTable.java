@@ -12,6 +12,7 @@ public class GuestTable implements Serializable{
     
 
     public GuestTable() {
+        this.guests = new ArrayList<>();
     }
 
     public GuestTable(ArrayList<Guest> guests) {

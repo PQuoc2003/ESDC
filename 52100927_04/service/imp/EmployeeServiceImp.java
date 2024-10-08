@@ -33,6 +33,7 @@ public class EmployeeServiceImp implements EmployeeService{
 
         if (employee == null) return false;
 
+
         // static file
 
         Information.currentEmployee = employee;
@@ -43,7 +44,7 @@ public class EmployeeServiceImp implements EmployeeService{
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
         String strDate = dateFormat.format(date);  
 
-        String logPath = "../../resources/log.txt";
+        String logPath = "resources/log.txt";
         String text = username + " - " + employee.getRole() + " - " + strDate;
 
         try {
@@ -53,6 +54,7 @@ public class EmployeeServiceImp implements EmployeeService{
             fileWriter.close();
 
         } catch (Exception e) {
+            System.out.println(e.toString());
             return false;
         }
 

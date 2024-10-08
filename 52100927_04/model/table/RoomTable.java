@@ -10,6 +10,7 @@ public class RoomTable implements Serializable{
     private ArrayList<Room> rooms;
 
     public RoomTable() {
+        rooms = new ArrayList<>();
     }
 
     public RoomTable(ArrayList<Room> rooms) {

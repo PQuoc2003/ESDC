@@ -130,7 +130,15 @@ public class Client {
                     break;
 
                 case "-logOut":
-                    hotel.logout();
+                    boolean isLogout = hotel.logout();
+
+                    if(!isLogout){
+                        System.out.println("You need to login first");
+                    } else {
+                        System.out.println("Logout successfully");
+                    }
+
+
                     break;
 
                 default:
