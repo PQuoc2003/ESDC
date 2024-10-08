@@ -56,7 +56,7 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        return this.remainRoom + " is available for " + this.price + " Euros per night";
+        return  this.remainRoom + " rooms of type " + this.type+ " are available for " + this.price + " Euros per night";
     }
 
     public int getPrice() {

@@ -8,6 +8,15 @@ import model.Employee;
 public class EmployeeTable implements Serializable{
     private ArrayList<Employee> employees;
 
+
+    public EmployeeTable() {
+        this.employees = new ArrayList<>();
+    }
+
+    public EmployeeTable(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
     public ArrayList<Employee> getEmployees() {
         return employees;
     }

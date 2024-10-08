@@ -12,7 +12,7 @@ public class GuestRepository {
 
     public boolean save(Guest guest) {
 
-        File file = new File("../resources/guest.ser");
+        File file = new File("resources/guest.ser");
 
         FileInputStream f = null;
 
@@ -20,7 +20,7 @@ public class GuestRepository {
 
         if (file.exists()) {
             try {
-                f = new FileInputStream("../resources/guest.ser");
+                f = new FileInputStream("resources/guest.ser");
                 ObjectInputStream in = new ObjectInputStream(f);
 
                 guestTable = (GuestTable) in.readObject();
@@ -43,7 +43,7 @@ public class GuestRepository {
 
 
         try {
-            FileOutputStream f1 = new FileOutputStream("../resources/guest.ser", true);
+            FileOutputStream f1 = new FileOutputStream("resources/guest.ser", true);
             ObjectOutputStream out = new ObjectOutputStream(f1);
 
             out.writeObject(guestTable);
@@ -63,7 +63,7 @@ public class GuestRepository {
 
     public GuestTable getAllGuest(){
 
-        File file = new File("../resources/guest.ser");
+        File file = new File("resources/guest.ser");
 
         FileInputStream f = null;
 
@@ -73,7 +73,7 @@ public class GuestRepository {
         GuestTable guestTable = null;
 
         try {
-            f = new FileInputStream("../resources/room.ser");
+            f = new FileInputStream("resources/guest.ser");
             ObjectInputStream in = new ObjectInputStream(f);
 
             guestTable = (GuestTable) in.readObject();

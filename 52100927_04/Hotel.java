@@ -1,4 +1,5 @@
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import model.table.GuestTable;
@@ -7,17 +8,17 @@ import model.Room;
 public interface Hotel extends Remote{
 
 
-    public ArrayList<String> helpList();
+    ArrayList<String> helpList() throws RemoteException;
 
-    public String login(String username, String password);
+    String login(String username, String password) throws RemoteException;
 
-    public ArrayList<Room> getAvailableRoom();
+    ArrayList<Room> getAvailableRoom() throws RemoteException;
 
-    public boolean book(String room_type, String guest_name, String ssn);
+    boolean book(String room_type, String guest_name, String ssn) throws RemoteException;
 
-    public GuestTable guestList();
+    GuestTable guestList() throws RemoteException;
 
-    public void logout();
+    boolean logout() throws RemoteException;
 
 
 
