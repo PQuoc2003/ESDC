@@ -178,6 +178,7 @@ public class StudentManagementImpl implements StudentManagement {
         for (Student student : students) {
             if (student.getGender().equalsIgnoreCase(gender)) {
                 if (student.getGpa() > highest) {
+                    highest = student.getGpa();
                     highestStudent = student;
 
                 }
@@ -195,6 +196,7 @@ public class StudentManagementImpl implements StudentManagement {
         for (Student student : students) {
             if (student.getName().split(" ")[0].equalsIgnoreCase(fname)) {
                 if (student.getGpa() > highest) {
+                    highest = student.getGpa();
                     highestStudent = student;
 
                 }
@@ -215,6 +217,7 @@ public class StudentManagementImpl implements StudentManagement {
             String lastname = names[names.length - 1];
             if (lastname.equalsIgnoreCase(lname)) {
                 if (student.getGpa() > highest) {
+                    highest = student.getGpa();
                     highestStudent = student;
 
                 }
@@ -233,6 +236,7 @@ public class StudentManagementImpl implements StudentManagement {
         for (Student student : students) {
             if (student.getMajor().equalsIgnoreCase(major)) {
                 if (student.getGpa() > highest) {
+                    highest = student.getGpa();
                     highestStudent = student;
 
                 }

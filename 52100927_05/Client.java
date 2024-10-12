@@ -39,13 +39,14 @@ public class Client {
                 bw.write(stub.findStudent_byID("51009070").toString() + "\n");
                 bw.write(stub.findStudent_byMajor("Computational Intelligent").size() + "\n");
                 bw.write(stub.findStudent_byGPA(4).size() + "\n");
+
                 bw.write(stub.getHighestGPA_byGender("male").toString() + "\n");
                 bw.write(stub.getHighestGPA_byFName("Ardella").toString() + "\n");
                 bw.write(stub.getHighestGPA_byLName("Scales").toString() + "\n");
                 bw.write(stub.getHighestGPA_byMajor("Information System").toString() + "\n");
                 bw.write(stub.getLowestGPA_byMajor("Information System").toString() + "\n");
 
-                bw.write(String.format("%.2f", stub.getAvgGPA()));
+                bw.write(String.format("%.2f\n", stub.getAvgGPA()));
 
                 // Print getTop10_byGPA()
                 for(Student s : stub.getTop10_byGPA()) {
