@@ -25,7 +25,7 @@ public class StudentManagementImpl implements StudentManagement {
 
             String readLine = "";
             while ((readLine = br.readLine()) != null) {
-                String[] atr = readLine.split(" ");
+                String[] atr = readLine.split("\t");
 
                 if (atr.length != 5)
                     continue;
@@ -246,12 +246,13 @@ public class StudentManagementImpl implements StudentManagement {
     @Override
     public Student getLowestGPA_byMajor(String major) throws RemoteException {
 
-        double lowest = 0;
+        double lowest = 11;
         Student lowestStudent = null;
 
         for (Student student : students) {
             if (student.getMajor().equalsIgnoreCase(major)) {
                 if (student.getGpa() < lowest) {
+                    lowest = student.getGpa();
                     lowestStudent = student;
 
                 }
