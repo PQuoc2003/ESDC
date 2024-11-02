@@ -1,4 +1,4 @@
-package com.hyperion.lab06.controller;
+package com.hyperion.lab07.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

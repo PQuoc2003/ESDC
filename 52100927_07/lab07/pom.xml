@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hyperion</groupId>
-	<artifactId>lab06</artifactId>
+	<artifactId>lab07</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lab06</name>
 	<description>demo login oauth</description>

@@ -1,4 +1,4 @@
-package com.hyperion.lab06;
+package com.hyperion.lab07;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

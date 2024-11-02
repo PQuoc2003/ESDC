@@ -1,4 +1,4 @@
-package com.hyperion.lab06.config;
+package com.hyperion.lab07.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +13,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+
         return http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**", "/login").permitAll()

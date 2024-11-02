@@ -1,4 +1,4 @@
-package com.hyperion.lab06.controller;
+package com.hyperion.lab07.controller;
 
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
